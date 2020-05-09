@@ -34,7 +34,7 @@ function Column({ column, tasks }) {
     return (
       <Droppable droppableId={column.id}>
         {({ droppableProps, innerRef, placeholder }) => (
-          <Box ref={innerRef} {...droppableProps}>
+          <Box minH={200} ref={innerRef} {...droppableProps}>
             {tasks?.map((task, index) => (
               <Task key={task.id} task={task} index={index} />
             ))}
