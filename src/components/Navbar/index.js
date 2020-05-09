@@ -13,11 +13,11 @@ function Navbar() {
       py={4}
       borderWidth="1px"
     >
-      <Box flex={1}>
+      <Box flex={2}>
         <Text fontWeight="bold">Kaban Board</Text>
       </Box>
       <Flex flex={1} justify="flex-end">
-        <Button onClick={toggleColorMode}>
+        <Button size="sm" onClick={toggleColorMode}>
           <Icon name={colorMode === "light" ? "moon" : "sun"} />
         </Button>
       </Flex>

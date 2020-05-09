@@ -2,6 +2,7 @@
   "name": "react-drag-n-drop",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://chamatt.github.io/tasks-kaban-board",
   "dependencies": {
     "@atlaskit/css-reset": "^5.0.10",
     "@chakra-ui/core": "^0.7.0",

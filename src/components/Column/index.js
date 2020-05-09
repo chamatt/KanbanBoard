@@ -4,26 +4,34 @@ import { Container, TaskList, Title } from "./styles";
 import { Droppable } from "react-beautiful-dnd";
 import Task from "../Task";
 
-import { Box, Text } from "@chakra-ui/core";
+import { Box, Text, Button, Flex, Icon } from "@chakra-ui/core";
 
 function Column({ column, tasks }) {
-  return (
-    <Box
-      // bg="gray.50"
-      minH="60vh"
-      minW={200}
-      w={{ base: "100%", sm: "50%", md: 300 }}
-      // borderWidth="1px"
-      // rounded="lg"
-      // mx={15}
-      p={3}
-      // style={{ backgroundColor: "red" }}
-    >
-      <Box>
-        <Text mb={2} fontSize="md" fontWeight="bold">
+  function renderEmptyColumnHeader() {
+    return (
+      <Flex mb={4} px={2} justify="space-between" align="center">
+        <Button leftIcon="add" size="sm" bg="transparent">
+          Add a group
+        </Button>
+      </Flex>
+    );
+  }
+
+  function renderHeader() {
+    return (
+      <Flex mb={4} px={2} justify="space-between" align="center">
+        <Text fontSize="md" fontWeight="bold">
           {column.title}
         </Text>
-      </Box>
+        <Button bg="transparent" size="sm">
+          <Icon name="add" />
+        </Button>
+      </Flex>
+    );
+  }
+
+  function renderTaskList() {
+    return (
       <Droppable droppableId={column.id}>
         {({ droppableProps, innerRef, placeholder }) => (
           <Box ref={innerRef} {...droppableProps}>
@@ -34,6 +42,13 @@ function Column({ column, tasks }) {
           </Box>
         )}
       </Droppable>
+    );
+  }
+
+  return (
+    <Box minH="60vh" minW={200} w={{ base: "100%", sm: "50%", md: 300 }} p={3}>
+      {column ? renderHeader() : renderEmptyColumnHeader()}
+      {column && tasks && renderTaskList()}
     </Box>
   );
 }

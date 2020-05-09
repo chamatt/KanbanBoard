@@ -71,9 +71,9 @@ function App() {
     <ThemeProvider theme={newTheme}>
       <ColorModeProvider>
         <CSSReset />
-        <Box>
+        <Flex h="100%" direction="column">
           <Navbar />
-          <Flex mt={15} wrap={false} overflowWrap="scroll">
+          <Flex flex={1} mt={15} wrap={false} overflowX="scroll">
             <DragDropContext
               // onDragStart
               // onDragUpdate
@@ -86,9 +86,10 @@ function App() {
                   <Column key={column.id} column={column} tasks={taskList} />
                 );
               })}
+              <Column key="new-column" />
             </DragDropContext>
           </Flex>
-        </Box>
+        </Flex>
       </ColorModeProvider>
     </ThemeProvider>
   );
