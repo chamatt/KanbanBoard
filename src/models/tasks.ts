@@ -1,5 +1,6 @@
 import { action, Action, computed, Computed, thunk, Thunk } from "easy-peasy";
 import { DropResult } from "react-beautiful-dnd";
+import { v4 as uuidv4 } from "uuid";
 
 type Priority = "high" | "medium" | "low";
 
@@ -43,6 +44,8 @@ export interface TasksModel {
   data: Data;
   tasksByStatus: Computed<TasksModel, TasksByStatus[]>;
   setStatus: Action<TasksModel, StatusData>;
+  createStatus: Action<TasksModel, Partial<Status>>;
+  editStatus: Action<TasksModel, Partial<Status>>;
   moveTask: Thunk<TasksModel, DropResult>;
 }
 
@@ -110,6 +113,34 @@ export const tasksModel: TasksModel = {
 
   setStatus: action((state, payload) => {
     state.data.status = payload;
+  }),
+  createStatus: action((state, payload) => {
+    const uuid = uuidv4();
+    state.data.status = {
+      byId: {
+        ...state.data.status.byId,
+        [uuid]: {
+          id: uuid,
+          title: payload.title || "New Column",
+          tasks: [],
+        },
+      },
+      allIds: [...state.data.status.allIds, uuid],
+    };
+  }),
+  editStatus: action((state, payload) => {
+    if (payload?.id) {
+      state.data.status = {
+        byId: {
+          ...state.data.status.byId,
+          [payload.id]: {
+            ...state.data.status.byId[payload.id],
+            title: payload.title || state.data.status.byId[payload.id].title,
+          },
+        },
+        allIds: [...state.data.status.allIds],
+      };
+    } else return state;
   }),
 
   moveTask: thunk((actions, payload, { getState }) => {

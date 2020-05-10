@@ -12,6 +12,8 @@ function Kaban() {
   const [columnOrder, setColumnOrder] = useState(initialData.columnOrder);
   const tasksByStatus = useStoreState((state) => state.tasks.tasksByStatus);
   const moveTask = useStoreActions((actions) => actions.tasks.moveTask);
+  const createStatus = useStoreActions((actions) => actions.tasks.createStatus);
+  const editStatus = useStoreActions((actions) => actions.tasks.editStatus);
 
   const onDragEnd = (result: DropResult) => {
     // const { destination, source, draggableId } = result;
@@ -62,9 +64,20 @@ function Kaban() {
             const column = status;
             // const column = columns?.[columnId];
             // const taskList = column.taskIds.map((taskId) => tasks[taskId]);
-            return <Column key={column.id} column={column} />;
+            return (
+              <Column
+                key={column.id}
+                column={column}
+                createStatus={createStatus}
+                editStatus={editStatus}
+              />
+            );
           })}
-          <Column key="new-column" />
+          <Column
+            key="new-column"
+            createStatus={createStatus}
+            editStatus={editStatus}
+          />
         </DragDropContext>
       </Flex>
     </Flex>
