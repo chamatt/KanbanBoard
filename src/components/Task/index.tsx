@@ -1,12 +1,17 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
-import { Container, Badge } from "./styles";
-import { Text, Box, Flex, PseudoBox, useColorMode } from "@chakra-ui/core";
+import { Badge } from "./styles";
+import { Text, Flex, useColorMode } from "@chakra-ui/core";
 
-function Task({ task, index }) {
-  const { colorMode, toggleColorMode } = useColorMode();
-  const color = { dark: "white", light: "gray.800" };
-  const bgColor = { light: "whiteAlpha.900", dark: "gray.800" };
+interface Props {
+  task: any;
+  index: number;
+}
+
+const Task = (props: Props) => {
+  const { task, index } = props;
+  const { colorMode } = useColorMode();
+  const bgColor: any = { light: "whiteAlpha.900", dark: "gray.800" };
   return (
     <Draggable draggableId={task.id} index={index}>
       {({ draggableProps, dragHandleProps, innerRef }) => (
@@ -16,7 +21,7 @@ function Task({ task, index }) {
           p={2}
           mb={2}
           boxShadow="md"
-          rounded
+          rounded="md"
           {...draggableProps}
           {...dragHandleProps}
           ref={innerRef}
@@ -29,6 +34,6 @@ function Task({ task, index }) {
       )}
     </Draggable>
   );
-}
+};
 
 export default Task;
