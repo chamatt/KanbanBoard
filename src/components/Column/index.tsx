@@ -3,7 +3,6 @@ import React, {
   useRef,
   useEffect,
   ChangeEvent,
-  FormEvent,
   KeyboardEvent,
 } from "react";
 
@@ -21,7 +20,6 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  useDisclosure,
 } from "@chakra-ui/core";
 import { TasksByStatus, Status } from "models/tasks";
 
@@ -36,7 +34,6 @@ const Column: React.FC<Props> = ({ column, createStatus, editStatus }) => {
 
   const [statusTitle, setStatusTitle] = useState("");
   const [isEditingGroup, setIsEditingGroup] = useState(false);
-  const { isOpen, onToggle } = useDisclosure();
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
