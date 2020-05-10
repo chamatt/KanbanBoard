@@ -4,9 +4,15 @@ import { Droppable } from "react-beautiful-dnd";
 import Task from "../Task";
 
 import { Box, Text, Button, Flex, Icon } from "@chakra-ui/core";
+import { TasksByStatus, Status } from "models/tasks";
 
-function Column({ column, tasks }) {
-  function renderEmptyColumnHeader() {
+interface Props {
+  column?: TasksByStatus;
+}
+
+const Column: React.FC<Props> = ({ column }) => {
+  const tasks = column?.tasks;
+  const renderEmptyColumnHeader = () => {
     return (
       <Flex mb={4} px={2} justify="space-between" align="center">
         <Button leftIcon="add" size="sm" bg="transparent">
@@ -14,24 +20,24 @@ function Column({ column, tasks }) {
         </Button>
       </Flex>
     );
-  }
+  };
 
-  function renderHeader() {
+  const renderHeader = (columnObj: TasksByStatus) => {
     return (
       <Flex mb={4} px={2} justify="space-between" align="center">
         <Text fontSize="md" fontWeight="bold">
-          {column.title}
+          {columnObj.title}
         </Text>
         <Button bg="transparent" size="sm">
           <Icon name="add" />
         </Button>
       </Flex>
     );
-  }
+  };
 
-  function renderTaskList() {
+  const renderTaskList = (columnObj: TasksByStatus) => {
     return (
-      <Droppable droppableId={column.id}>
+      <Droppable droppableId={columnObj.id}>
         {({ droppableProps, innerRef, placeholder }) => (
           <Box minH={200} ref={innerRef} {...droppableProps}>
             {tasks?.map((task, index) => (
@@ -42,14 +48,14 @@ function Column({ column, tasks }) {
         )}
       </Droppable>
     );
-  }
+  };
 
   return (
     <Box minH="60vh" minW={200} w={{ base: "100%", sm: "50%", md: 300 }} p={3}>
-      {column ? renderHeader() : renderEmptyColumnHeader()}
-      {column && tasks && renderTaskList()}
+      {column ? renderHeader(column) : renderEmptyColumnHeader()}
+      {column && tasks && renderTaskList(column)}
     </Box>
   );
-}
+};
 
 export default Column;
