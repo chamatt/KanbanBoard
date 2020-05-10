@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { ThemeProvider, theme, Box } from "@chakra-ui/core";
-import { Flex, CSSReset, ColorModeProvider } from "@chakra-ui/core";
-import Navbar from "components/Navbar";
+import React from "react";
+import { ThemeProvider } from "@chakra-ui/core";
+import { CSSReset, ColorModeProvider } from "@chakra-ui/core";
 import Kaban from "pages/Kaban";
 
 import { store, persistor } from "models";

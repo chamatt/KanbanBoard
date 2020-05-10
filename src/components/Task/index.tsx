@@ -1,7 +1,7 @@
 import React from "react";
-import { Draggable, DraggableProps } from "react-beautiful-dnd";
-import { Container, Badge } from "./styles";
-import { Text, Box, Flex, PseudoBox, useColorMode } from "@chakra-ui/core";
+import { Draggable } from "react-beautiful-dnd";
+import { Badge } from "./styles";
+import { Text, Flex, useColorMode } from "@chakra-ui/core";
 
 interface Props {
   task: any;
@@ -10,8 +10,7 @@ interface Props {
 
 const Task = (props: Props) => {
   const { task, index } = props;
-  const { colorMode, toggleColorMode } = useColorMode();
-  const color: any = { dark: "white", light: "gray.800" };
+  const { colorMode } = useColorMode();
   const bgColor: any = { light: "whiteAlpha.900", dark: "gray.800" };
   return (
     <Draggable draggableId={task.id} index={index}>
