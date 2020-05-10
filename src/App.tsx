@@ -4,19 +4,21 @@ import { Flex, CSSReset, ColorModeProvider } from "@chakra-ui/core";
 import Navbar from "components/Navbar";
 import Kaban from "pages/Kaban";
 
-import { store } from "models";
+import { store, persistor } from "models";
 import { StoreProvider } from "easy-peasy";
+import { PersistGate } from "redux-persist/integration/react";
 
 const App = () => {
   return (
     <StoreProvider store={store}>
-      <ThemeProvider>
-        <ColorModeProvider>
-          <CSSReset />
-
-          <Kaban />
-        </ColorModeProvider>
-      </ThemeProvider>
+      <PersistGate persistor={persistor}>
+        <ThemeProvider>
+          <ColorModeProvider>
+            <CSSReset />
+            <Kaban />
+          </ColorModeProvider>
+        </ThemeProvider>
+      </PersistGate>
     </StoreProvider>
   );
 };
