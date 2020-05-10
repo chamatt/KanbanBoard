@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "eda622917abd237aacdd101fcd132924",
+    "revision": "7d77dd65a180e637954403d67391b18d",
     "url": "/tasks-kaban-board/index.html"
   },
   {
-    "revision": "06c93819449f611dd7a9",
+    "revision": "06ce680cf83e0b967434",
     "url": "/tasks-kaban-board/static/css/main.665f99f1.chunk.css"
   },
   {
-    "revision": "5355f6b8f8efd028cdf0",
-    "url": "/tasks-kaban-board/static/js/2.de5f9804.chunk.js"
+    "revision": "c8dc13bbaaee0d140a0a",
+    "url": "/tasks-kaban-board/static/js/2.2097c84b.chunk.js"
   },
   {
     "revision": "4f4b39e776c4ce087d84114e0d382cdf",
-    "url": "/tasks-kaban-board/static/js/2.de5f9804.chunk.js.LICENSE.txt"
+    "url": "/tasks-kaban-board/static/js/2.2097c84b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "06c93819449f611dd7a9",
-    "url": "/tasks-kaban-board/static/js/main.11f0193c.chunk.js"
+    "revision": "06ce680cf83e0b967434",
+    "url": "/tasks-kaban-board/static/js/main.8873f0c6.chunk.js"
   },
   {
     "revision": "b78aa0875ea6fb80dd2f",
