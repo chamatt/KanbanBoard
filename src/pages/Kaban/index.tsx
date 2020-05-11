@@ -10,6 +10,9 @@ function Kaban() {
   const moveTask = useStoreActions((actions) => actions.tasks.moveTask);
   const createStatus = useStoreActions((actions) => actions.tasks.createStatus);
   const editStatus = useStoreActions((actions) => actions.tasks.editStatus);
+  const editTask = useStoreActions((actions) => actions.tasks.editTask);
+  const createTask = useStoreActions((actions) => actions.tasks.createTask);
+  const deleteTask = useStoreActions((actions) => actions.tasks.deleteTask);
 
   return (
     <Flex h="100%" direction="column">
@@ -24,6 +27,9 @@ function Kaban() {
                 column={column}
                 createStatus={createStatus}
                 editStatus={editStatus}
+                editTask={editTask}
+                createTask={createTask}
+                deleteTask={deleteTask}
               />
             );
           })}
@@ -31,6 +37,9 @@ function Kaban() {
             key="new-column"
             createStatus={createStatus}
             editStatus={editStatus}
+            editTask={editTask}
+            createTask={createTask}
+            deleteTask={deleteTask}
           />
         </DragDropContext>
       </Flex>

@@ -11,15 +11,6 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-// const selectBadgeColor = (priority) => {
-//   return (
-//     {
-//       high: "#fa9191",
-//       medium: "#6886c5",
-//       low: "#58b4ae",
-//     }[priority] || "#6886c5"
-//   );
-// };
 const selectBadgeColor = (priority) => {
   return (
     {
@@ -36,15 +27,4 @@ export const Badge = styled(TBadge).attrs((props) => ({
   fontSize: "10px",
   p: "5px",
   variant: "subtle",
-}))`
-  /* background-color: ${(props) => selectBadgeColor(props.priority)}; */
-  /* width: 30px; */
-  /* border-radius: 5px;
-  padding: 5px;
-  font-size: 10px;
-  color: white; */
-  /* display: inline-flex; */
-  /* justify-content: center;
-  align-items: center;
-  align-self: flex-end; */
-`;
+}))``;
