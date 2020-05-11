@@ -1,13 +1,21 @@
 import { action, Action, computed, Computed, thunk, Thunk } from "easy-peasy";
 import { DropResult } from "react-beautiful-dnd";
 import { v4 as uuidv4 } from "uuid";
+import * as _ from "lodash";
 
-type Priority = "high" | "medium" | "low";
+type Priority = "high" | "medium" | "low" | "none";
 
 export interface Task {
   id: string;
   content: string;
   priority: Priority;
+}
+
+export interface TaskWithStatus {
+  id: string;
+  content: string;
+  priority: Priority;
+  statusId: string;
 }
 
 export interface Status {
@@ -46,6 +54,10 @@ export interface TasksModel {
   setStatus: Action<TasksModel, StatusData>;
   createStatus: Action<TasksModel, Partial<Status>>;
   editStatus: Action<TasksModel, Partial<Status>>;
+  setTasks: Action<TasksModel, TasksData>;
+  createTask: Action<TasksModel, Partial<TaskWithStatus>>;
+  deleteTask: Thunk<TasksModel, { id: string }>;
+  editTask: Action<TasksModel, Partial<Task>>;
   moveTask: Thunk<TasksModel, DropResult>;
 }
 
@@ -102,7 +114,6 @@ export const tasksModel: TasksModel = {
   tasksByStatus: computed((state) => {
     const { tasks, status } = state.data;
     const statusValues = status.allIds.map((id) => status.byId[id]);
-    console.log(statusValues);
     const resolveTask = (taskId: string) => tasks.byId[taskId];
     const mapTasks = (taskAllIds: string[]) => taskAllIds.map(resolveTask);
     return statusValues.map((status: Status) => ({
@@ -113,6 +124,9 @@ export const tasksModel: TasksModel = {
 
   setStatus: action((state, payload) => {
     state.data.status = payload;
+  }),
+  setTasks: action((state, payload) => {
+    state.data.tasks = payload;
   }),
   createStatus: action((state, payload) => {
     const uuid = uuidv4();
@@ -141,6 +155,78 @@ export const tasksModel: TasksModel = {
         allIds: [...state.data.status.allIds],
       };
     } else return state;
+  }),
+  createTask: action((state, payload) => {
+    const uuid = uuidv4();
+    if (payload.statusId) {
+      state.data.tasks = {
+        byId: {
+          ...state.data.tasks.byId,
+          [uuid]: {
+            id: uuid,
+            content: payload?.content || "New Task",
+            priority: "none",
+          },
+        },
+        allIds: [...state.data.tasks.allIds, uuid],
+      };
+      state.data.status = {
+        ...state.data.status,
+        byId: {
+          ...state.data.status.byId,
+          [payload.statusId]: {
+            ...state.data.status.byId[payload.statusId],
+            tasks: [...state.data.status.byId[payload.statusId].tasks, uuid],
+          },
+        },
+      };
+    }
+  }),
+  editTask: action((state, payload) => {
+    if (payload?.id) {
+      state.data.tasks = {
+        byId: {
+          ...state.data.tasks.byId,
+          [payload.id]: {
+            ...state.data.tasks.byId[payload.id],
+            content:
+              payload.content || state.data.tasks.byId[payload.id].content,
+          },
+        },
+        allIds: [...state.data.tasks.allIds],
+      };
+    } else return state;
+  }),
+  deleteTask: thunk((actions, payload, { getState }) => {
+    const tasks = getState().data.tasks;
+    const status = getState().data.status;
+    const removedTaskById = (id: string, objTasks: TasksData): TasksData => {
+      const { [id]: removed, ...byId } = objTasks.byId;
+      const allIds = _.without(objTasks.allIds, payload.id);
+      return {
+        ...objTasks,
+        byId,
+        allIds,
+      };
+    };
+    const removedTasksFromStatus = (
+      id: string,
+      objStatus: StatusData
+    ): StatusData => {
+      const byId = _.mapValues(objStatus.byId, (stat) => {
+        return {
+          ...stat,
+          tasks: _.without(stat.tasks, id),
+        };
+      });
+      return {
+        ...objStatus,
+        byId,
+      };
+    };
+
+    actions.setTasks(removedTaskById(payload.id, tasks));
+    actions.setStatus(removedTasksFromStatus(payload.id, status));
   }),
 
   moveTask: thunk((actions, payload, { getState }) => {

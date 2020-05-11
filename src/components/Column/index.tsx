@@ -1,12 +1,6 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  ChangeEvent,
-  KeyboardEvent,
-} from "react";
+import React, { useState } from "react";
 
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable, Draggable } from "react-beautiful-dnd";
 import Task from "../Task";
 
 import {
@@ -21,62 +15,49 @@ import {
   MenuList,
   MenuItem,
 } from "@chakra-ui/core";
-import { TasksByStatus, Status } from "models/tasks";
+import {
+  TasksByStatus,
+  Status,
+  Task as ITask,
+  TaskWithStatus,
+} from "models/tasks";
+import AddNewTaskInput from "components/AddNewTaskInput";
+import useEditField from "components/hooks/useEditField";
 
 interface Props {
   column?: TasksByStatus;
   createStatus: (status: Partial<Status>) => void;
   editStatus: (status: Partial<Status>) => void;
+  createTask: (task: Partial<TaskWithStatus>) => void;
+  deleteTask: ({ id }: { id: string }) => void;
+  editTask: (task: Partial<ITask>) => void;
 }
 
-const Column: React.FC<Props> = ({ column, createStatus, editStatus }) => {
+const Column: React.FC<Props> = ({
+  column,
+  createStatus,
+  editStatus,
+  createTask,
+  deleteTask,
+  editTask,
+}) => {
   const tasks = column?.tasks;
+  const {
+    field: statusTitle,
+    isEditing: isEditingGroup,
+    setIsEditing: setIsEditingGroup,
+    setField: setStatusTitle,
+    inputRef,
+    handleBlur,
+    handleChange,
+    onKeyPressed,
+  } = useEditField({
+    fieldId: column?.id,
+    onCreate: (field) => createStatus({ title: field }),
+    onEdit: (id, field) => editStatus({ id: id, title: field }),
+  });
 
-  const [statusTitle, setStatusTitle] = useState("");
-  const [isEditingGroup, setIsEditingGroup] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (isEditingGroup) inputRef?.current?.focus();
-  }, [isEditingGroup]);
-
-  const handleCreateStatus = () => {
-    if (statusTitle.length > 0) {
-      createStatus({
-        title: statusTitle,
-        tasks: [],
-      });
-      setIsEditingGroup(false);
-      setStatusTitle("");
-    } else {
-      setIsEditingGroup(false);
-    }
-  };
-
-  const handleEditStatus = () => {
-    if (column && statusTitle.length > 0) {
-      editStatus({
-        id: column.id,
-        title: statusTitle,
-      });
-      setIsEditingGroup(false);
-      setStatusTitle("");
-    } else {
-      setIsEditingGroup(false);
-    }
-  };
-
-  const handleBlur = () => {
-    if (column?.id) handleEditStatus();
-    else handleCreateStatus();
-  };
-
-  const onKeyPressed = (event: KeyboardEvent) => {
-    if (event.key === "Enter") {
-      if (column?.id) handleEditStatus();
-      else handleCreateStatus();
-    }
-  };
+  const [isAddingNewTask, setIsAddingNewTask] = useState(false);
 
   const renderMenu = () => {
     return (
@@ -111,9 +92,7 @@ const Column: React.FC<Props> = ({ column, createStatus, editStatus }) => {
         ref={inputRef}
         value={statusTitle}
         onKeyPress={onKeyPressed}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setStatusTitle(e.target.value)
-        }
+        onChange={handleChange}
         variant="unstyled"
         placeholder="Status name"
       />
@@ -160,10 +139,43 @@ const Column: React.FC<Props> = ({ column, createStatus, editStatus }) => {
       <Droppable droppableId={columnObj.id}>
         {({ droppableProps, innerRef, placeholder }) => (
           <Box minH={200} ref={innerRef} {...droppableProps}>
-            {tasks?.map((task, index) => (
-              <Task key={task.id} task={task} index={index} />
-            ))}
+            {column &&
+              tasks &&
+              tasks.map((task, index) => (
+                <Task
+                  statusId={column.id}
+                  createTask={createTask}
+                  deleteTask={deleteTask}
+                  editTask={editTask}
+                  key={task?.id}
+                  task={task}
+                  index={index}
+                />
+              ))}
+            {column && isAddingNewTask && (
+              <Task
+                statusId={column.id}
+                createTask={(args) => {
+                  createTask(args);
+                  setIsAddingNewTask(false);
+                }}
+                deleteTask={deleteTask}
+                editTask={editTask}
+                draggable={false}
+                autoFocus
+                key={`${column.id}/taks-${tasks?.length || 0}`}
+                // task={}
+                index={tasks?.length || 0}
+              />
+            )}
             {placeholder}
+
+            {column && !isAddingNewTask && (
+              <AddNewTaskInput
+                key={`${column.id}`}
+                onClick={() => setIsAddingNewTask(true)}
+              />
+            )}
           </Box>
         )}
       </Droppable>
