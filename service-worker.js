@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/tasks-kaban-board/precache-manifest.b3c2ba0bd2e36174b3775867bc49c0e7.js"
+  "/tasks-kaban-board/precache-manifest.88fbc2321200511c97c9d241c8fda416.js"
 );
 
 self.addEventListener('message', (event) => {

@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/tasks-kaban-board/static/css/main.665f99f1.chunk.css",
-    "main.js": "/tasks-kaban-board/static/js/main.8873f0c6.chunk.js",
-    "main.js.map": "/tasks-kaban-board/static/js/main.8873f0c6.chunk.js.map",
+    "main.js": "/tasks-kaban-board/static/js/main.505f99fe.chunk.js",
+    "main.js.map": "/tasks-kaban-board/static/js/main.505f99fe.chunk.js.map",
     "runtime-main.js": "/tasks-kaban-board/static/js/runtime-main.81297170.js",
     "runtime-main.js.map": "/tasks-kaban-board/static/js/runtime-main.81297170.js.map",
-    "static/js/2.2097c84b.chunk.js": "/tasks-kaban-board/static/js/2.2097c84b.chunk.js",
-    "static/js/2.2097c84b.chunk.js.map": "/tasks-kaban-board/static/js/2.2097c84b.chunk.js.map",
+    "static/js/2.4f2d80e5.chunk.js": "/tasks-kaban-board/static/js/2.4f2d80e5.chunk.js",
+    "static/js/2.4f2d80e5.chunk.js.map": "/tasks-kaban-board/static/js/2.4f2d80e5.chunk.js.map",
     "index.html": "/tasks-kaban-board/index.html",
-    "precache-manifest.b3c2ba0bd2e36174b3775867bc49c0e7.js": "/tasks-kaban-board/precache-manifest.b3c2ba0bd2e36174b3775867bc49c0e7.js",
+    "precache-manifest.88fbc2321200511c97c9d241c8fda416.js": "/tasks-kaban-board/precache-manifest.88fbc2321200511c97c9d241c8fda416.js",
     "service-worker.js": "/tasks-kaban-board/service-worker.js",
     "static/css/main.665f99f1.chunk.css.map": "/tasks-kaban-board/static/css/main.665f99f1.chunk.css.map",
-    "static/js/2.2097c84b.chunk.js.LICENSE.txt": "/tasks-kaban-board/static/js/2.2097c84b.chunk.js.LICENSE.txt"
+    "static/js/2.4f2d80e5.chunk.js.LICENSE.txt": "/tasks-kaban-board/static/js/2.4f2d80e5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.81297170.js",
-    "static/js/2.2097c84b.chunk.js",
+    "static/js/2.4f2d80e5.chunk.js",
     "static/css/main.665f99f1.chunk.css",
-    "static/js/main.8873f0c6.chunk.js"
+    "static/js/main.505f99fe.chunk.js"
   ]
 }
