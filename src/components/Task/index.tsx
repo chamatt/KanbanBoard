@@ -172,7 +172,7 @@ const Task: React.FC<Props> = ({
   // if (draggable)
   return (
     <Draggable
-      draggableId={task?.id || "test"}
+      draggableId={task?.id || statusId}
       index={index}
       isDragDisabled={!draggable}
     >
