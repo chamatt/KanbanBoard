@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/tasks-kaban-board/static/css/main.665f99f1.chunk.css",
-    "main.js": "/tasks-kaban-board/static/js/main.505f99fe.chunk.js",
-    "main.js.map": "/tasks-kaban-board/static/js/main.505f99fe.chunk.js.map",
+    "main.js": "/tasks-kaban-board/static/js/main.6bfc0b51.chunk.js",
+    "main.js.map": "/tasks-kaban-board/static/js/main.6bfc0b51.chunk.js.map",
     "runtime-main.js": "/tasks-kaban-board/static/js/runtime-main.81297170.js",
     "runtime-main.js.map": "/tasks-kaban-board/static/js/runtime-main.81297170.js.map",
     "static/js/2.4f2d80e5.chunk.js": "/tasks-kaban-board/static/js/2.4f2d80e5.chunk.js",
     "static/js/2.4f2d80e5.chunk.js.map": "/tasks-kaban-board/static/js/2.4f2d80e5.chunk.js.map",
     "index.html": "/tasks-kaban-board/index.html",
-    "precache-manifest.88fbc2321200511c97c9d241c8fda416.js": "/tasks-kaban-board/precache-manifest.88fbc2321200511c97c9d241c8fda416.js",
+    "precache-manifest.52fb443e28cd41952c12fa0024d6d70d.js": "/tasks-kaban-board/precache-manifest.52fb443e28cd41952c12fa0024d6d70d.js",
     "service-worker.js": "/tasks-kaban-board/service-worker.js",
     "static/css/main.665f99f1.chunk.css.map": "/tasks-kaban-board/static/css/main.665f99f1.chunk.css.map",
     "static/js/2.4f2d80e5.chunk.js.LICENSE.txt": "/tasks-kaban-board/static/js/2.4f2d80e5.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.81297170.js",
     "static/js/2.4f2d80e5.chunk.js",
     "static/css/main.665f99f1.chunk.css",
-    "static/js/main.505f99fe.chunk.js"
+    "static/js/main.6bfc0b51.chunk.js"
   ]
 }
