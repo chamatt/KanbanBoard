@@ -163,7 +163,8 @@ const Column: React.FC<Props> = ({
                 editTask={editTask}
                 draggable={false}
                 autoFocus
-                key={`${column.id}/taks-${tasks?.length || 0}`}
+                removeAutoFocus={() => setIsAddingNewTask(false)}
+                key={`${column.id}/tasks-${tasks?.length || 0}`}
                 // task={}
                 index={tasks?.length || 0}
               />
