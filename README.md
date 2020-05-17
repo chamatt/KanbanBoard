@@ -1,11 +1,12 @@
 <h1 align="center">
-  Tasks API
+  KanbanBoard
 </h1>
 
 <h3 align="center">
-  A Project Management REST API, built with Express + Prisma 2 ORM.
+  A Kanban Board for project and task management
 </h3>
 
+![](kanbanboard.gif)
 
 <p align="center">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/chamatt/tasks-kaban-board?color=%23FF9000">
