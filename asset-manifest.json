@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/tasks-kaban-board/static/css/main.665f99f1.chunk.css",
-    "main.js": "/tasks-kaban-board/static/js/main.2b483717.chunk.js",
-    "main.js.map": "/tasks-kaban-board/static/js/main.2b483717.chunk.js.map",
-    "runtime-main.js": "/tasks-kaban-board/static/js/runtime-main.81297170.js",
-    "runtime-main.js.map": "/tasks-kaban-board/static/js/runtime-main.81297170.js.map",
-    "static/js/2.4f2d80e5.chunk.js": "/tasks-kaban-board/static/js/2.4f2d80e5.chunk.js",
-    "static/js/2.4f2d80e5.chunk.js.map": "/tasks-kaban-board/static/js/2.4f2d80e5.chunk.js.map",
-    "index.html": "/tasks-kaban-board/index.html",
-    "precache-manifest.9a2dffe046c76f9cd1bb2aa544607090.js": "/tasks-kaban-board/precache-manifest.9a2dffe046c76f9cd1bb2aa544607090.js",
-    "service-worker.js": "/tasks-kaban-board/service-worker.js",
-    "static/css/main.665f99f1.chunk.css.map": "/tasks-kaban-board/static/css/main.665f99f1.chunk.css.map",
-    "static/js/2.4f2d80e5.chunk.js.LICENSE.txt": "/tasks-kaban-board/static/js/2.4f2d80e5.chunk.js.LICENSE.txt"
+    "main.css": "/KanbanBoard/static/css/main.665f99f1.chunk.css",
+    "main.js": "/KanbanBoard/static/js/main.2b483717.chunk.js",
+    "main.js.map": "/KanbanBoard/static/js/main.2b483717.chunk.js.map",
+    "runtime-main.js": "/KanbanBoard/static/js/runtime-main.1578d27e.js",
+    "runtime-main.js.map": "/KanbanBoard/static/js/runtime-main.1578d27e.js.map",
+    "static/js/2.ca3a1ead.chunk.js": "/KanbanBoard/static/js/2.ca3a1ead.chunk.js",
+    "static/js/2.ca3a1ead.chunk.js.map": "/KanbanBoard/static/js/2.ca3a1ead.chunk.js.map",
+    "index.html": "/KanbanBoard/index.html",
+    "precache-manifest.cce0492d45b87f17877f82155d5bedd6.js": "/KanbanBoard/precache-manifest.cce0492d45b87f17877f82155d5bedd6.js",
+    "service-worker.js": "/KanbanBoard/service-worker.js",
+    "static/css/main.665f99f1.chunk.css.map": "/KanbanBoard/static/css/main.665f99f1.chunk.css.map",
+    "static/js/2.ca3a1ead.chunk.js.LICENSE.txt": "/KanbanBoard/static/js/2.ca3a1ead.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.81297170.js",
-    "static/js/2.4f2d80e5.chunk.js",
+    "static/js/runtime-main.1578d27e.js",
+    "static/js/2.ca3a1ead.chunk.js",
     "static/css/main.665f99f1.chunk.css",
     "static/js/main.2b483717.chunk.js"
   ]
