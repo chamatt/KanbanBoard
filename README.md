@@ -78,7 +78,7 @@ Technologies that were used in this application
 
 ### Test the live version
 
-You can use the deployed application here: [KabanBoard](https://chamatt.github.io/tasks-kaban-board)
+You can use the deployed application here: [KabanBoard](https://chamatt.github.io/KanbanBoard/)
 
 ### Or build it yourself
 
