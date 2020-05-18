@@ -40,7 +40,7 @@ A complete Kaban Board application. (Trello/Jira Clone)
 
 #### Features:
 
-[✔] Add/Remove/Rename tasks to a board column
+[✔] Add tasks to a board column
 
 [✔] Remove tasks from board columns
 
