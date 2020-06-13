@@ -48,20 +48,9 @@ A complete Kaban Board application. (Trello/Jira Clone)
 
 [✔] Move tasks to other board columns using drag and drop
 
-[✖] View/Edit Tasks details
-
-[✖] Authentication
-
-[✖] Manage different projects (boards)
-
 [✔] Create new board columns (e.g.: Todo, Done, Doing, QA...)
 
 [✔] Rename board columns
-
-[✖] Rearrange board columns with drag-n-drop
-
-
-To see the **back-end API**, built with Express + Prisma, click here: [Tasks API](https://github.com/chamatt/tasks-api)<br />
 
 ## 🚀 Technologies
 
