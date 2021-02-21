@@ -23,9 +23,9 @@ interface Props {
   index: number;
   autoFocus?: boolean;
   draggable?: boolean;
-  showAddTask?: boolean;
   editTask: (task: Partial<ITask>) => void;
   createTask: (task: Partial<TaskWithStatus>) => void;
+  removeAutoFocus?: () => void;
   deleteTask: ({ id }: { id: string }) => void;
 }
 
@@ -35,13 +35,13 @@ const Task: React.FC<Props> = ({
   index,
   draggable = true,
   autoFocus = false,
-  showAddTask = false,
+  removeAutoFocus,
   createTask,
   deleteTask,
   editTask,
 }) => {
   const { colorMode } = useColorMode();
-  const bgColor: any = { light: "whiteAlpha.900", dark: "gray.800" };
+  const bgColor: any = { light: "whiteAlpha.900", dark: "gray.700" };
 
   const {
     field,
@@ -153,11 +153,17 @@ const Task: React.FC<Props> = ({
           >
             Rename
           </MenuItem>
-          {task?.id && (
-            <MenuItem onClick={() => deleteTask({ id: task.id })}>
-              Delete
-            </MenuItem>
-          )}
+          <MenuItem
+            onClick={() => {
+              if (task?.id) {
+                deleteTask({ id: task.id });
+              } else if (removeAutoFocus) {
+                removeAutoFocus();
+              }
+            }}
+          >
+            Delete
+          </MenuItem>
         </MenuList>
       </Menu>
     );
@@ -166,7 +172,7 @@ const Task: React.FC<Props> = ({
   // if (draggable)
   return (
     <Draggable
-      draggableId={task?.id || "test"}
+      draggableId={task?.id || statusId}
       index={index}
       isDragDisabled={!draggable}
     >
